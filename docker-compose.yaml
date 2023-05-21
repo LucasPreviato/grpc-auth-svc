@@ -1,0 +1,38 @@
+version: '3.9'
+services:
+  auth-svc-dev:
+    container_name: auth-svc-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/home/node/backend/auth-svc 
+      - ./.docker/zsh/powerlevel10k/.p10k.zsh:/home/node/.p10k.zsh:delegated
+      - ./.docker/zsh/history:/home/node/zsh:delegated
+    depends_on:
+      - auth-db-dev
+  auth-db-dev:
+    container_name: auth-db-dev
+    image: postgres:alpine3.18
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./.docker/postgres:/home/node/postgres/data
+  auth-db-dev-test:
+    container_name: auth-db-dev-test
+    image: postgres:alpine3.18
+    profiles:
+      - test
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    tmpfs:
+      - /var/lib/postgresql/data
