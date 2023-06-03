@@ -6,15 +6,15 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 50051:50051
     volumes:
       - .:/home/node/backend/auth-svc 
       - ./.docker/zsh/powerlevel10k/.p10k.zsh:/home/node/.p10k.zsh:delegated
       - ./.docker/zsh/history:/home/node/zsh:delegated
     depends_on:
-      - auth-db-dev
-  auth-db-dev:
-    container_name: auth-db-dev
+      - micro-auth-dev
+  micro-auth-dev:
+    container_name: micro-auth-dev
     image: postgres:alpine3.18
     ports:
       - 5432:5432

@@ -50,7 +50,8 @@
 				"Prisma.prisma",
 				"Prisma.prisma-insider",
 				"2gua.rainbow-brackets",
-				"fabianlauer.vs-code-xml-format"
+				"fabianlauer.vs-code-xml-format",
+				"icrawl.discord-vscode"
 			]
 		}
 	}

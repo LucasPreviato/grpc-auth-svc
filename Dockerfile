@@ -9,6 +9,7 @@ RUN apt update && apt install -y \
     git \
     git-flow \
     fonts-powerline \
+    protobuf-compiler \
     procps 
 
 RUN npm install -g @nestjs/cli@latest
