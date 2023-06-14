@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 50051:50051
+      - 50050:50050
     volumes:
       - .:/home/node/backend/auth-svc 
       - ./.docker/zsh/powerlevel10k/.p10k.zsh:/home/node/.p10k.zsh:delegated
@@ -30,7 +30,7 @@ services:
     profiles:
       - test
     ports:
-      - 5433:5432
+      - 5432:5432
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
